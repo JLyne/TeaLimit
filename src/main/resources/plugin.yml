@@ -1,6 +1,6 @@
 name: TeaLimit
 main: net.teamonster.tealimit.Main
-version: ${project.version}
-api-version: 1.15
-authors: [TeaMaster, Artuto]
+version: @project.version@
+api-version: 1.16
+authors: ['Jim (NotKatuen)', TeaMaster, Artuto]
 description: Limit entity spawns
