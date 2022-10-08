@@ -1,10 +1,12 @@
 package net.teamonster.tealimit;
 
+import org.bukkit.Particle;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.EntityEnterLoveModeEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Collection;
@@ -33,21 +35,43 @@ public class Main extends JavaPlugin implements Listener {
 	public void onCreatureSpawn(CreatureSpawnEvent event) {
 		switch (event.getSpawnReason()) {
 			case BREEDING, EGG, DISPENSE_EGG -> {
-				if (entityLimit(event.getEntity(), this.breedLimit))
+				if (entityLimit(event.getEntity(), this.breedLimit)) {
 					event.setCancelled(true);
+
+					event.getEntity().getWorld().spawnParticle(
+							Particle.VILLAGER_ANGRY, event.getEntity().getEyeLocation(),
+							5, 0.35, 0.25, 0.35);
+				}
 			}
 			case NATURAL, NETHER_PORTAL -> {
-				if (entityLimit(event.getEntity(), this.naturalLimit))
+				if (entityLimit(event.getEntity(), this.naturalLimit)) {
 					event.setCancelled(true);
+				}
 			}
 			case SPAWNER -> {
-				if (entityLimit(event.getEntity(), this.spawnerLimit))
+				if (entityLimit(event.getEntity(), this.spawnerLimit)) {
 					event.setCancelled(true);
+				}
 			}
 			case SPAWNER_EGG -> {
-				if (entityLimit(event.getEntity(), this.spawnEggLimit))
+				if (entityLimit(event.getEntity(), this.spawnEggLimit)) {
 					event.setCancelled(true);
+
+					event.getEntity().getWorld().spawnParticle(
+							Particle.VILLAGER_ANGRY, event.getEntity().getEyeLocation(),
+							5, 0.35, 0.25, 0.35);
+				}
 			}
+		}
+	}
+
+	@EventHandler
+	public void onCreatureWantsToFuck(EntityEnterLoveModeEvent event) {
+		if (entityLimit(event.getEntity(), this.breedLimit)) {
+			event.setCancelled(true);
+			event.getEntity().getWorld().spawnParticle(
+					Particle.VILLAGER_ANGRY, event.getEntity().getEyeLocation(),
+					5, 0.35, 0.25, 0.35);
 		}
 	}
 
