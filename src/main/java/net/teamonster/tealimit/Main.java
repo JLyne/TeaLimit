@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.List;
+import java.util.Collection;
 
 public class Main extends JavaPlugin implements Listener {
 	private int breedLimit;
@@ -52,7 +52,7 @@ public class Main extends JavaPlugin implements Listener {
 	}
 
 	private boolean entityLimit(Entity entity, int limit) {
-		List<Entity> entityList = entity.getNearbyEntities(this.range, 255.0d, this.range);
+		Collection<Entity> entityList = entity.getLocation().getNearbyEntities(this.range, 255.0d, this.range);
 		EntityType entityType = entity.getType();
 		int count = 0;
 
@@ -61,6 +61,6 @@ public class Main extends JavaPlugin implements Listener {
 				count++;
 		}
 
-		return count > limit;
+		return count >= limit;
 	}
 }
