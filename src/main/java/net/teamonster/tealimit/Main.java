@@ -39,7 +39,7 @@ public class Main extends JavaPlugin implements Listener {
 					event.setCancelled(true);
 
 					event.getEntity().getWorld().spawnParticle(
-							Particle.VILLAGER_ANGRY, event.getEntity().getEyeLocation(),
+							Particle.ANGRY_VILLAGER, event.getEntity().getEyeLocation(),
 							5, 0.35, 0.25, 0.35);
 				}
 			}
@@ -58,7 +58,7 @@ public class Main extends JavaPlugin implements Listener {
 					event.setCancelled(true);
 
 					event.getEntity().getWorld().spawnParticle(
-							Particle.VILLAGER_ANGRY, event.getEntity().getEyeLocation(),
+							Particle.ANGRY_VILLAGER, event.getEntity().getEyeLocation(),
 							5, 0.35, 0.25, 0.35);
 				}
 			}
@@ -70,7 +70,7 @@ public class Main extends JavaPlugin implements Listener {
 		if (entityLimit(event.getEntity(), this.breedLimit)) {
 			event.setCancelled(true);
 			event.getEntity().getWorld().spawnParticle(
-					Particle.VILLAGER_ANGRY, event.getEntity().getEyeLocation(),
+					Particle.ANGRY_VILLAGER, event.getEntity().getEyeLocation(),
 					5, 0.35, 0.25, 0.35);
 		}
 	}
