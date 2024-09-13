@@ -13,7 +13,6 @@ import java.util.Collection;
 
 public class Main extends JavaPlugin implements Listener {
 	private int breedLimit;
-	private int naturalLimit;
 	private int range;
 	private int spawnEggLimit;
 	private int spawnerLimit;
@@ -25,7 +24,6 @@ public class Main extends JavaPlugin implements Listener {
 		saveConfig();
 
 		this.breedLimit = getConfig().getInt("breed-limit");
-		this.naturalLimit = getConfig().getInt("natural-limit");
 		this.range = getConfig().getInt("range");
 		this.spawnEggLimit = getConfig().getInt("spawnegg-limit");
 		this.spawnerLimit = getConfig().getInt("spawner-limit");
@@ -41,11 +39,6 @@ public class Main extends JavaPlugin implements Listener {
 					event.getEntity().getWorld().spawnParticle(
 							Particle.ANGRY_VILLAGER, event.getEntity().getEyeLocation(),
 							5, 0.35, 0.25, 0.35);
-				}
-			}
-			case NATURAL, NETHER_PORTAL -> {
-				if (entityLimit(event.getEntity(), this.naturalLimit)) {
-					event.setCancelled(true);
 				}
 			}
 			case SPAWNER -> {
