@@ -69,7 +69,8 @@ public class Main extends JavaPlugin implements Listener {
 	}
 
 	private boolean entityLimit(Entity entity, int limit) {
-		Collection<Entity> entityList = entity.getLocation().getNearbyEntities(this.range, 255.0d, this.range);
+		int verticalRange = entity.getWorld().getMaxHeight() - entity.getWorld().getMinHeight();
+		Collection<Entity> entityList = entity.getLocation().getNearbyEntities(this.range, verticalRange, this.range);
 		EntityType entityType = entity.getType();
 		int count = 0;
 
