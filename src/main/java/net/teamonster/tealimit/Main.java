@@ -16,6 +16,7 @@ public class Main extends JavaPlugin implements Listener {
 	private int range;
 	private int spawnEggLimit;
 	private int spawnerLimit;
+	private int potionLimit;
 
 	@Override
 	public void onEnable() {
@@ -27,6 +28,7 @@ public class Main extends JavaPlugin implements Listener {
 		this.range = getConfig().getInt("range");
 		this.spawnEggLimit = getConfig().getInt("spawnegg-limit");
 		this.spawnerLimit = getConfig().getInt("spawner-limit");
+		this.potionLimit = getConfig().getInt("potion-limit");
 	}
 
 	@EventHandler
@@ -53,6 +55,11 @@ public class Main extends JavaPlugin implements Listener {
 					event.getEntity().getWorld().spawnParticle(
 							Particle.ANGRY_VILLAGER, event.getEntity().getEyeLocation(),
 							5, 0.35, 0.25, 0.35);
+				}
+			}
+			case POTION_EFFECT -> {
+				if (entityLimit(event.getEntity(), this.potionLimit)) {
+					event.setCancelled(true);
 				}
 			}
 		}
