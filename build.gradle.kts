@@ -25,7 +25,7 @@ dependencies {
 
 paper {
     main = "net.teamonster.tealimit.Main"
-    apiVersion = libs.versions.paperApi.get().replace(Regex("\\-R\\d.\\d-SNAPSHOT"), "")
+    apiVersion = libs.versions.paperApi.get().replace(".build.+", "")
     authors = listOf("Jim (AnEnragedPigeon)", "TeaMaster", "Artuto")
     description = "Limit entity spawns"
 }
